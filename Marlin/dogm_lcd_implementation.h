@@ -80,8 +80,7 @@ int lcd_contrast;
 #ifdef U8GLIB_ST7920
 //U8GLIB_ST7920_128X64_RRD u8g(0,0,0);
 //U8GLIB_ST7920_128X64_RRD u8g(0);
-//U8GLIB_SSD1306_ADAFRUIT_128X64 u8g(27, 29, 23, 25);
-U8GLIB_SSD1306_128X64_2X u8g(27, 29, 23, 25);
+U8GLIB_SSD1306_ADAFRUIT_128X64 u8g(27, 29, 23, 25);
 #elif defined(MAKRPANEL)
 // The MaKrPanel display, ST7565 controller as well
 U8GLIB_NHD_C12864 u8g(DOGLCD_CS, DOGLCD_A0);
@@ -247,6 +246,9 @@ static void lcd_implementation_status_screen()
 		 u8g.drawBox(38,17,2,2);
 		 u8g.setColorIndex(1);	// black on white
 		}
+ #else
+ u8g.setPrintPos(31,27);
+ u8g.print("---");
  #endif
  
  // Extruder 3
@@ -265,6 +267,9 @@ static void lcd_implementation_status_screen()
 		 u8g.drawBox(62,17,2,2);
 		 u8g.setColorIndex(1);	// black on white
 		}
+ #else
+ u8g.setPrintPos(55,27);
+ u8g.print("---");
  #endif
  
  // Heatbed
